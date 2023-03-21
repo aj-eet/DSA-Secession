@@ -1,0 +1,48 @@
+//https://practice.geeksforgeeks.org/problems/implementing-ceil-in-bst/1
+int findCeil(Node* root, int input) {
+    if (root == NULL) return -1;
+    int ans=-1;
+    while(root!=NULL)
+    {
+        if(root->data==input)
+        return input;
+        else if(root->data>input)
+        {
+            ans=root->data;
+            root=root->left;
+        }
+        else 
+        {
+            root=root->right;
+        }
+    }
+    return ans;
+
+    // Your code here
+}
+
+//https://www.geeksforgeeks.org/floor-in-binary-search-tree-bst/
+int floor(Node* root, int x) {
+    // Code here
+    if(root==NULL)
+    return -1;
+    int ans= -1;
+    while(root!=NULL)
+    {
+         if(root->data==x)
+        return x;
+        else if(root->data>x)
+      {
+       
+        root=root->left;
+      }
+    
+    else{
+         ans=root->data;
+        root=root->right;
+    }
+    }
+        
+    return ans;
+    }
+   
