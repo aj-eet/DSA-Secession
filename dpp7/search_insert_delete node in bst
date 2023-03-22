@@ -1,4 +1,5 @@
 // https://practice.geeksforgeeks.org/problems/search-a-node-in-bst/1
+//SEARCHIN A NODE IN BST
 
 bool search(Node* root, int x) {
     // Your code here
@@ -14,4 +15,48 @@ bool search(Node* root, int x) {
         root=root->right;
     }
     return false;
+}
+
+//https://practice.geeksforgeeks.org/problems/delete-a-node-from-bst/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//DELETION OF NODE IN BST;
+
+ Node* delNode(Node* root,int x)
+  {
+      if(root==NULL)
+      return NULL;
+      if(root->data>x)
+      root->left=delNode(root->left,x);
+      
+      else if(root->data<x)
+      root->right=delNode(root->right,x);
+      else 
+      {
+          if(root->left==NULL&&root->right==NULL)
+          {
+              delete root;
+              return NULL;
+          }
+          else if(root->left==NULL)
+          {
+              Node* temp=root->right;
+              delete root;
+              return temp;
+          }
+          else 
+          {
+              Node*temp=root->right;
+              while(temp->left!=NULL)
+              {
+                  temp=temp->left;
+              }
+              
+              root->data=temp->data;
+              root->right=delNode(root->right,temp->data);
+          }
+      }
+  }
+// Function to delete a node from BST.
+Node *deleteNode(Node *root, int X) {
+    // your code goes here
+    return delNode(root,X);
 }
